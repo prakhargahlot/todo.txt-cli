@@ -33,6 +33,12 @@ else
 	datarootdir = $(prefix)/share/bash_completion.d
 endif
 
+ifdef TODO_DIR
+	todo_dir = $(TODO_DIR)
+else
+	todo_dir = ~/.todo
+endif
+
 # Dynamically detect/generate version file as necessary
 # This file will define a variable called VERSION.
 .PHONY: .FORCE-VERSION-FILE
@@ -66,7 +72,7 @@ install: installdirs
 	$(INSTALL_PROGRAM) todo.sh $(DESTDIR)$(bindir)/todo.sh
 	$(INSTALL_DATA) todo_completion $(DESTDIR)$(datarootdir)/todo
 	[ -e $(DESTDIR)$(sysconfdir)/todo/config ] || \
-	    sed "s/^\(export[ \t]*TODO_DIR=\).*/\1~\/.todo/" todo.cfg > $(DESTDIR)$(sysconfdir)/todo/config
+	    sed "s@^\(export[ \t]*TODO_DIR=\).*@\1${todo_dir}@" todo.cfg > $(DESTDIR)$(sysconfdir)/todo/config
 
 uninstall:
 	rm -f $(DESTDIR)$(bindir)/todo.sh

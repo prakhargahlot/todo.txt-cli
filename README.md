@@ -40,9 +40,10 @@ make test
 - `INSTALL_DIR`: PATH for executables (default /usr/local/bin)
 - `CONFIG_DIR`: PATH for todo.txt config
 - `BASH_COMPLETION`: PATH for autocompletion scripts (default to /etc/bash_completion.d)
+- `TODO_DIR`: PATH for the pre-existing todo.txt, done.txt and report.txt files.
 
 ```shell
-make install CONFIG_DIR=/etc INSTALL_DIR=/usr/bin BASH_COMPLETION=/usr/share/bash-completion/completions
+make install CONFIG_DIR=/etc INSTALL_DIR=/usr/bin BASH_COMPLETION=/usr/share/bash-completion/completions TODO_DIR=/home/user/cloud/todo
 ```
 
 #### Arch Linux (AUR)
